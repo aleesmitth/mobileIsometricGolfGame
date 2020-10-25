@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainBallController : MonoBehaviour {
+    private const float MIN_VELOCITY = 2;
     public FloatValue shotStrength;
     public FloatValue ballPower;
     public FloatValue touchDeadzone;
     public FloatValue rotationSpeed;
     public FloatValue maxStrength;
-    public Transform mainBall;
+    public Transform ballDirection;
     public AimBallsController aimBallsController;
     private Vector3 initialTouchPosition;
     private Touch touch;
@@ -23,6 +24,11 @@ public class MainBallController : MonoBehaviour {
     }
 
     private void Update() {
+        if (_rigidbody.velocity.sqrMagnitude < MIN_VELOCITY) {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+        }
+            
         if (Input.touchCount != 1) return;
         this.touch = Input.GetTouch(0);
         switch (touch.phase) {
@@ -35,7 +41,7 @@ public class MainBallController : MonoBehaviour {
             case TouchPhase.Ended: Release(); 
                 break;
             case TouchPhase.Stationary:
-            default: 
+            default:
                 break;
         }
     }
@@ -60,7 +66,7 @@ public class MainBallController : MonoBehaviour {
         //Debug.DrawRay(mainBall.position, direction, Color.cyan, 2f);
         //Debug.DrawRay(mainBall.position, direction, Color.cyan, 2f);
         var lookRotation = Quaternion.LookRotation(direction,Vector3.up);
-        mainBall.rotation = Quaternion.Lerp(mainBall.rotation, lookRotation, Time.deltaTime * rotationSpeed.value);
+        ballDirection.rotation = Quaternion.Lerp(ballDirection.rotation, lookRotation, Time.deltaTime * rotationSpeed.value);
         UpdateShotStrength(position);
         //mainBall.transform.forward = direction;
         //mainBall.ro
@@ -69,7 +75,7 @@ public class MainBallController : MonoBehaviour {
     }
 
     private void Release() {
-        _rigidbody.AddForce(mainBall.forward * shotStrength.value, ForceMode.Impulse);
+        _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
         aimBallsController.ResetBalls();
     }
@@ -83,7 +89,7 @@ public class MainBallController : MonoBehaviour {
         Ray ray = _camera.ScreenPointToRay(Input.GetTouch(0).position);
         // create a logical plane at this object's position (my main ball in this case)
         // and perpendicular to world Y:
-        Plane plane = new Plane(Vector3.up, mainBall.position);
+        Plane plane = new Plane(Vector3.up, ballDirection.position);
         if (plane.Raycast(ray, out var distance)){ // if plane hit...
             position = ray.GetPoint(distance); // get the point
             // pos has the position in the plane you've touched
@@ -94,7 +100,7 @@ public class MainBallController : MonoBehaviour {
 
     private bool ImStill() {
         //check if object is still moving
-        return _rigidbody.velocity.sqrMagnitude < .1f;
+        return _rigidbody.velocity.sqrMagnitude < MIN_VELOCITY;
     }
 
     private void UpdateShotStrength(Vector3 position) {

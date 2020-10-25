@@ -1793,6 +1793,36 @@ Transform:
   m_Father: {fileID: 996565561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &953249734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 953249736}
+  m_Layer: 1
+  m_Name: BallDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &953249736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953249734}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 996565561}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,8 +2071,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 923200171}
+  - {fileID: 953249736}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &996565562
 SphereCollider:
@@ -2145,7 +2176,7 @@ MonoBehaviour:
   touchDeadzone: {fileID: 11400000, guid: 483accc7999f2414ba0d81d7a253af63, type: 2}
   rotationSpeed: {fileID: 11400000, guid: 5a598a1bb5c217542ab7e3c70e2e2399, type: 2}
   maxStrength: {fileID: 11400000, guid: eaaa3640312a49648929028231f759c6, type: 2}
-  mainBall: {fileID: 996565561}
+  ballDirection: {fileID: 953249736}
   aimBallsController: {fileID: 996565565}
 --- !u!54 &996565567
 Rigidbody:
@@ -2156,12 +2187,12 @@ Rigidbody:
   m_GameObject: {fileID: 996565560}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &996565568
 MonoBehaviour:
@@ -3208,7 +3239,7 @@ Transform:
   m_Children:
   - {fileID: 2052466460}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!1 &1315722207
 GameObject:
@@ -3434,7 +3465,7 @@ Transform:
   m_Children:
   - {fileID: 1283611911}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327255231 stripped
 GameObject:
@@ -4430,7 +4461,7 @@ Transform:
   m_Children:
   - {fileID: 836067516}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972268579
 GameObject:
