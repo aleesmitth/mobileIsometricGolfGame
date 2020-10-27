@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ChangeBallPower : MonoBehaviour {
     public FloatValue ballPower;
+    public FloatValue maxPower;
     public void IncreasePower() {
-        if(ballPower.value >= 15) return;
+        if(ballPower.value >= maxPower.value) return;
         ballPower.value += 1f;
     }
 

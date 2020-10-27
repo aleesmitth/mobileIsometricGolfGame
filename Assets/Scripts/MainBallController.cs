@@ -11,7 +11,6 @@ public class MainBallController : MonoBehaviour {
     public FloatValue rotationSpeed;
     public FloatValue maxStrength;
     public Transform ballDirection;
-    public AimBallsController aimBallsController;
     private Vector3 initialTouchPosition;
     private Touch touch;
 
@@ -25,9 +24,6 @@ public class MainBallController : MonoBehaviour {
 
     private void Update() {
         if (!ImStill()) return;
-        
-        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
         
         if (Input.touchCount != 1 || !CanShootBall) return;
         this.touch = Input.GetTouch(0);
@@ -78,7 +74,6 @@ public class MainBallController : MonoBehaviour {
     private void Release() {
         _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
-        aimBallsController.ResetBalls();
         EventManager.OnBallHit();
     }
 
@@ -102,7 +97,7 @@ public class MainBallController : MonoBehaviour {
 
     private bool ImStill() {
         //check if object is still moving
-        return _rigidbody.velocity.sqrMagnitude < minVelocity.value;
+        return _rigidbody.velocity.sqrMagnitude < minVelocity.value && _rigidbody.angularVelocity.sqrMagnitude < minVelocity.value;
     }
 
     private void UpdateShotStrength(Vector3 position) {

@@ -33,11 +33,11 @@ public class AimBallsController : MonoBehaviour {
         }
     }
 
-    public void ResetBalls() {
+    /*public void ResetBalls() {
         foreach (var ball in aimingBalls) {
             var localPosition = ball.localPosition;
             localPosition = new Vector3(localPosition.x, localPosition.y, 0);
             ball.localPosition = localPosition;
         }
-    }
+    }*/
 }
