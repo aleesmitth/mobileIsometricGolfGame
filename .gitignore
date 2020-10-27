@@ -3,6 +3,7 @@
 ###
 IGNORAR
 [Aa]ssets/AssetStoreTools*
+[Aa]ssets/Editor Default Resources
 [Bb]uild/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/

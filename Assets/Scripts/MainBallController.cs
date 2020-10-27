@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainBallController : MonoBehaviour {
-    private const float MIN_VELOCITY = 2;
+    public FloatValue minVelocity;
     public FloatValue shotStrength;
     public FloatValue ballPower;
     public FloatValue touchDeadzone;
@@ -14,7 +14,7 @@ public class MainBallController : MonoBehaviour {
     public AimBallsController aimBallsController;
     private Vector3 initialTouchPosition;
     private Touch touch;
-    
+
     //cache of expensive getters
     private Camera _camera;
     private Rigidbody _rigidbody;
@@ -24,12 +24,12 @@ public class MainBallController : MonoBehaviour {
     }
 
     private void Update() {
-        if (_rigidbody.velocity.sqrMagnitude < MIN_VELOCITY) {
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.angularVelocity = Vector3.zero;
-        }
-            
-        if (Input.touchCount != 1) return;
+        if (!ImStill()) return;
+        
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        
+        if (Input.touchCount != 1 || !CanShootBall) return;
         this.touch = Input.GetTouch(0);
         switch (touch.phase) {
             case TouchPhase.Began: StartDrag();
@@ -52,7 +52,8 @@ public class MainBallController : MonoBehaviour {
     }
 
     private void Dragging() {
-        if(!ImStill()) return;
+        //if(!ImStill()) return;
+        EventManager.OnBallDragged();
         var position = CastRayFromScreenToWorld();
         //direction from where i am touching now to initial touch
         var direction = initialTouchPosition - position;
@@ -78,6 +79,7 @@ public class MainBallController : MonoBehaviour {
         _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
         aimBallsController.ResetBalls();
+        EventManager.OnBallHit();
     }
 
     private Vector3 CastRayFromScreenToWorld() {
@@ -100,10 +102,12 @@ public class MainBallController : MonoBehaviour {
 
     private bool ImStill() {
         //check if object is still moving
-        return _rigidbody.velocity.sqrMagnitude < MIN_VELOCITY;
+        return _rigidbody.velocity.sqrMagnitude < minVelocity.value;
     }
 
     private void UpdateShotStrength(Vector3 position) {
         shotStrength.value = Mathf.Clamp(Vector3.Distance(initialTouchPosition, position), 0, maxStrength.value) * ballPower.value;
     }
+
+    public bool CanShootBall { private get; set; } = default(bool);
 }

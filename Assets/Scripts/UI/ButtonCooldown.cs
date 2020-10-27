@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cooldown : MonoBehaviour {
+public class ButtonCooldown : MonoBehaviour {
     public Button thisButton;
     public Button[] buttonsToCooldown;
 

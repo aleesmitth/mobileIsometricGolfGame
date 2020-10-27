@@ -12,6 +12,7 @@ public class JoystickCamController : MonoBehaviour {
 
     private void Update() {
         var direction = joystick.Direction;
+        direction = Quaternion.Euler(0, 0, -45) * direction;
         var camPosition = freelookVCam.position;
         freelookVCam.position = new Vector3(camPosition.x + direction.x * camSpeed.value, camPosition.y, camPosition.z + direction.y * camSpeed.value);
     }
