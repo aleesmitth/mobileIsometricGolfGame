@@ -15,6 +15,10 @@ public class DisplayFloatValue : MonoBehaviour {
     }
 
     public void Display() {
+        // le dejo solo 1 decimal
+        if (floatValue.value % 1 != 0) {
+            floatValue.value = Mathf.Floor(floatValue.value*10f) / 10f;
+        }
         if (inTheSameLine)
             text.text = originalText + " " + floatValue.value;
         else {

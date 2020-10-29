@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private float deltaTime = 0.0f;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour {
         //limitar fps
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         currentStreak.value = 0;
     }
 
@@ -31,10 +33,20 @@ public class GameManager : MonoBehaviour {
         EventManager.onLevelFinished -= LevelFinished;
     }
 
+    public void ChangeGameQuality(bool higherQuality) {
+        if (higherQuality) {
+            QualitySettings.IncreaseLevel();
+        }
+        else {
+            QualitySettings.DecreaseLevel();
+        }
+        var scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
     private void MakeSingleton() {
         if (instance == null) {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if(instance!=this)
             Destroy(gameObject);
