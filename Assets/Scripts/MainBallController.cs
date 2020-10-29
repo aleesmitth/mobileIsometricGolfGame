@@ -12,6 +12,7 @@ public class MainBallController : MonoBehaviour {
     public FloatValue maxStrength;
     public Transform ballDirection;
     private Vector3 initialTouchPosition;
+    private bool initialTouch = default(bool);
     private Touch touch;
 
     //cache of expensive getters
@@ -44,11 +45,13 @@ public class MainBallController : MonoBehaviour {
 
     private void StartDrag() {
         this.initialTouchPosition = CastRayFromScreenToWorld();
-        //Debug.DrawRay(mainBall.position, initialTouchPosition, Color.red, 2f);
+        this.initialTouch = true;
+        //Debug.DrawRay(transform.position, initialTouchPosition, Color.red, 2f);
     }
 
     private void Dragging() {
         //if(!ImStill()) return;
+        if (!initialTouch) return;
         EventManager.OnBallDragged();
         var position = CastRayFromScreenToWorld();
         //direction from where i am touching now to initial touch
@@ -75,6 +78,7 @@ public class MainBallController : MonoBehaviour {
         _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
         EventManager.OnBallHit();
+        initialTouch = false;
     }
 
     private Vector3 CastRayFromScreenToWorld() {
