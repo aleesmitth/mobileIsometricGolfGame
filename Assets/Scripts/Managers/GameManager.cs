@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,8 +15,9 @@ public class GameManager : MonoBehaviour {
     public FloatValue bestStreak;
     public DisplayFloatValue currentStreakDisplay;
     public DisplayFloatValue bestStreakDisplay;
-    public static GameManager instance;
     public LevelManager levelManager;
+
+    public static GameManager instance;
 
     private void Awake() {
         this.MakeSingleton();
@@ -22,7 +25,6 @@ public class GameManager : MonoBehaviour {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        currentStreak.value = 0;
     }
 
     private void OnEnable() {
