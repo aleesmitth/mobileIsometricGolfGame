@@ -108,4 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb19b370717c9fa40b1d2bc0d5cf0643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 0}
+  coinTextPool: {fileID: 7830909853657384951, guid: 8e1c157368acf8045a2b7d31ea8cf1e5, type: 3}
+  canvas: {fileID: 3911664100979981346, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}

@@ -23,7 +23,7 @@ public class FileManager : MonoBehaviour {
         StartCoroutine(AutomaticBackupSave());
     }
 
-    public void Save(string localPath) {
+    private void Save(string localPath) {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = new FileStream(Application.persistentDataPath + localPath, FileMode.Create);
         playerData.OnBeforeSerialize();
@@ -32,7 +32,7 @@ public class FileManager : MonoBehaviour {
         fileStream.Close();
     }
 
-    public void Load() {
+    private void Load() {
         string validLocalPath;
         if (File.Exists(Application.persistentDataPath + playerDataLocalPath)) {
             validLocalPath = "/PlayerData.dat";

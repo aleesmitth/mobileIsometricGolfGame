@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,20 +10,28 @@ public class LevelManager : MonoBehaviour {
     public Levels allTheLevels;
     public Transform startingPosition;
     public GameObject currentMap;
+    public FloatValue finishLevelReward;
+
     public void LoadLevel() {
         bool inRange = false;
         int i = 0;
         while (!inRange && i < allTheLevels.levels.Length) {
             if (allTheLevels.levels[i].levelRangeMax > currentStreak.value) {
                 inRange = true;
+                //lo hice al azar esto, pero cada vez q cambia de stage, cambian las rewards por terminar el mapa
+                //el player va a recibir las rewards 1 mapa atrasado digamos, porq las recibe antes
+                //de cargar el mapa, esto seria como setearlas para el proximo
+                this.finishLevelReward.value = (currentStreak.value + 1) * allTheLevels.levels[i].levelRangeMax;
                 this.currentMap = allTheLevels.levels[i].GetRandomMap();
             }
 
             i++;
         }
 
+        // se terminaron los stages de mapas, lo mantengo en el ultimo
         if (!inRange) {
-            this.currentMap = allTheLevels.levels[i - 1].GetRandomMap();
+            i--;
+            this.currentMap = allTheLevels.levels[i].GetRandomMap();
         }
 
         this.currentMap = Instantiate(this.currentMap);

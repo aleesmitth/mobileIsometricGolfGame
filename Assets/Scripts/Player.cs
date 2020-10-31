@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public FloatValue coin;
+    public FloatValue totalCoins;
+    public FloatValue finishLevelReward;
     public DisplayFloatValue coinDisplay;
     private void OnEnable() {
         EventManager.onCoinGrabbed += GainCoin;
@@ -14,8 +15,13 @@ public class Player : MonoBehaviour {
         EventManager.onCoinGrabbed -= GainCoin;
     }
 
+    public void LevelFinished() {
+        totalCoins.value += finishLevelReward.value;
+        coinDisplay.Display();
+    }
+
     private void GainCoin() {
-        coin.value++;
+        totalCoins.value++;
         coinDisplay.Display();
     }
 }

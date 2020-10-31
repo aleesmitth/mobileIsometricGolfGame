@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private float deltaTime = 0.0f;
+    public Player player;
     public FloatValue fps;
     public TextMeshProUGUI fpsText;
     public FloatValue currentStreak;
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour {
             bestStreakDisplay.Display();
         }
         currentStreakDisplay.Display();
+        player.LevelFinished();
         levelManager.UnloadLevel();
         levelManager.LoadLevel();
     }

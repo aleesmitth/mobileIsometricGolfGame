@@ -3,10 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour {
+public class PoolCoinGrabText : MonoBehaviour {
     public GameObject prefab;
+    public Transform parent;
     public int initialPoolSize;
+    public static PoolCoinGrabText instance;
     private readonly Queue<GameObject> queue = new Queue<GameObject>();
+
+    private void Awake() {
+        this.MakeSingleton();
+    }
+    
+    private void MakeSingleton() {
+        if (instance == null) {
+            instance = this;
+        }
+        else if(instance!=this)
+            Destroy(gameObject);
+    }
 
     public GameObject Get() {
         if (queue.Count == 0) {
@@ -22,6 +36,7 @@ public class Pool : MonoBehaviour {
         }
 
         depooledObject.SetActive(true);
+        depooledObject.transform.SetParent(parent, false);
         return depooledObject;
     }
 
