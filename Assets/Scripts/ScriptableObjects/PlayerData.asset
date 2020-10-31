@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   coin: {fileID: 11400000, guid: 213e3226dbd4ae84e92d133c0a96a90d, type: 2}
-  bestStreak: {fileID: 11400000, guid: b3e9ee948805b7e49bbdcc951c8da614, type: 2}
+  bestStreak: {fileID: 11400000, guid: f92903b938ad45c4ea342b3624870e7a, type: 2}
+  coinBuffer: 0
+  bestStreakBuffer: 59.72843

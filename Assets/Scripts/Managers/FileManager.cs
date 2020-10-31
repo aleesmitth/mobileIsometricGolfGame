@@ -8,11 +8,10 @@ using UnityEngine;
 
 public class FileManager : MonoBehaviour {
     public PlayerData playerData;
-    private string playerDataLocalPath = "/PlayerData.dat";
-    private string playerDataLocalPathBackup = "/PlayerDataBackup.dat";
+    private const string playerDataLocalPath = "/PlayerData.dat";
+    private const string playerDataLocalPathBackup = "/PlayerDataBackup.dat";
     public FloatValue autoSaveInSeconds;
-
-    public TextMeshProUGUI textTest;
+    
     private void Start() {
         Load();
         StartCoroutine(AutomaticBackupSave());
