@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
     }
 
-    private void LevelFinished() {
+    private void LevelFinished(PortalType portalType) {
         currentStreak.value++;
         if (currentStreak.value > bestStreak.value) {
             bestStreak.value = currentStreak.value;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
         currentStreakDisplay.Display();
         EventManager.OnPlayerReceiveRewards();
         levelManager.UnloadLevel();
-        levelManager.LoadLevel();
+        levelManager.LoadLevel(portalType);
     }
 
     public void StartGame() {

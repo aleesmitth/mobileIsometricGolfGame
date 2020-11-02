@@ -7,7 +7,7 @@ public class EventManager : ScriptableObject {
 	public static event Action onBallHit;
     public static event Action onBallDragged;
     public static event Action onCoinGrabbed;
-    public static event Action onLevelFinished;
+    public static event Action<PortalType> onLevelFinished;
     public static event Action onPlayerReceiveRewards;
     public static void OnBallHit() {
 		onBallHit?.Invoke();
@@ -21,8 +21,8 @@ public class EventManager : ScriptableObject {
 		onCoinGrabbed?.Invoke();
 	}
 
-	public static void OnLevelFinished() {
-		onLevelFinished?.Invoke();
+	public static void OnLevelFinished(PortalType portalType) {
+		onLevelFinished?.Invoke(portalType);
 	}
 	
 	public static void OnPlayerReceiveRewards() {

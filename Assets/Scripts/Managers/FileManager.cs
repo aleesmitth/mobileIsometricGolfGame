@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 
 public class FileManager : MonoBehaviour {
-    public PlayerData playerData;
+    public PlayerDataBuffer playerDataBuffer;
     private const string playerDataLocalPath = "/PlayerData.dat";
     private const string playerDataLocalPathBackup = "/PlayerDataBackup.dat";
     public FloatValue autoSaveInSeconds;
@@ -26,8 +26,8 @@ public class FileManager : MonoBehaviour {
     private void Save(string localPath) {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = new FileStream(Application.persistentDataPath + localPath, FileMode.Create);
-        playerData.OnBeforeSerialize();
-        var json = JsonUtility.ToJson(playerData);
+        playerDataBuffer.OnBeforeSerialize();
+        var json = JsonUtility.ToJson(playerDataBuffer);
         binaryFormatter.Serialize(fileStream, json);
         fileStream.Close();
     }
@@ -45,9 +45,9 @@ public class FileManager : MonoBehaviour {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = new FileStream(Application.persistentDataPath + validLocalPath, FileMode.Open);
         var json = binaryFormatter.Deserialize(fileStream) as string;
-        JsonUtility.FromJsonOverwrite(json, playerData);
+        JsonUtility.FromJsonOverwrite(json, playerDataBuffer);
         fileStream.Close();
-        playerData.OnAfterDeserialize();
+        playerDataBuffer.OnAfterDeserialize();
     }
 
     private void OnApplicationPause(bool pauseStatus) {

@@ -14,14 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - levelRangeMax: 2
-    mapsInThisRange:
+    normalMapsInThisRange:
     - {fileID: 6561555283590892388, guid: c5f1049d828ccdd468ad7696ea9c9ee0, type: 3}
     - {fileID: 6561555283590892388, guid: 6bf8c38ec7a815e4dbb436fcd7da9173, type: 3}
     - {fileID: 6561555283590892388, guid: dd8399b40cf829a4d97198ae48470a51, type: 3}
+    lightMapsInThisRange:
+    - {fileID: 6561555283590892388, guid: 8b24c6ef664258a4c8b0e66ce9a12770, type: 3}
+    - {fileID: 6561555283590892388, guid: ed2ca92d522528b43832c4022d132fe2, type: 3}
+    - {fileID: 6561555283590892388, guid: c678497f4716686479aacf4c0fcd9d09, type: 3}
+    darkMapsInThisRange:
+    - {fileID: 6561555283590892388, guid: c2dc10a23dd09304ba6d897877ad27bb, type: 3}
+    - {fileID: 6561555283590892388, guid: f6c1394d27526ce4d85c3fded5c504ae, type: 3}
+    - {fileID: 6561555283590892388, guid: 6500c3557be804f4bbfd65b3b04be796, type: 3}
     shotsReward: 5
+    lightReward: 0
+    darkReward: 0
   - levelRangeMax: 4
-    mapsInThisRange:
+    normalMapsInThisRange:
     - {fileID: 6561555283590892388, guid: f8419976047543d42a5cabae89fd2c15, type: 3}
     - {fileID: 6561555283590892388, guid: c81b1251303a02d4aa4b34ca39e4c376, type: 3}
     - {fileID: 6561555283590892388, guid: 2fd989f6a2cbaaf4393178fcc6789e23, type: 3}
+    lightMapsInThisRange:
+    - {fileID: 6561555283590892388, guid: 305dbe207553aac4faa15eb61f39fb01, type: 3}
+    - {fileID: 6561555283590892388, guid: 674ef908c6d408b4885712c49272237a, type: 3}
+    - {fileID: 6561555283590892388, guid: 81ef7c46edfa460438481f8ab165461f, type: 3}
+    darkMapsInThisRange:
+    - {fileID: 6561555283590892388, guid: f208963425a3b724396a64485246bcff, type: 3}
+    - {fileID: 6561555283590892388, guid: 2c3787d4f2f6eea42b6d71995de8588e, type: 3}
+    - {fileID: 6561555283590892388, guid: 72ee49faeeadc9e4a868ee59db1d678f, type: 3}
     shotsReward: 10
+    lightReward: 0
+    darkReward: 0

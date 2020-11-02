@@ -12,19 +12,23 @@ public class LevelManager : MonoBehaviour {
     public GameObject currentMap;
     public FloatValue levelCoinReward;
     public FloatValue levelShotReward;
+    public FloatValue levelLightReward;
+    public FloatValue levelDarkReward;
 
-    public void LoadLevel() {
+    public void LoadLevel(PortalType portalType) {
         bool inRange = false;
         int i = 0;
         while (!inRange && i < allTheLevels.levels.Length) {
             if (allTheLevels.levels[i].levelRangeMax > currentStreak.value) {
                 inRange = true;
-                //lo hice al azar esto, pero cada vez q cambia de stage, cambian las rewards por terminar el mapa
-                //el player va a recibir las rewards 1 mapa atrasado digamos, porq las recibe antes
-                //de cargar el mapa, esto seria como setearlas para el proximo
+                
+                this.currentMap = allTheLevels.levels[i].GetRandomMap(portalType);
+                
+                //actualizo las rewards
                 this.levelCoinReward.value = (currentStreak.value + 1) * allTheLevels.levels[i].levelRangeMax;
                 this.levelShotReward.value = allTheLevels.levels[i].shotsReward;
-                this.currentMap = allTheLevels.levels[i].GetRandomMap();
+                this.levelLightReward.value = allTheLevels.levels[i].lightReward;
+                this.levelDarkReward.value = allTheLevels.levels[i].darkReward;
             }
 
             i++;
@@ -33,7 +37,11 @@ public class LevelManager : MonoBehaviour {
         // se terminaron los stages de mapas, lo mantengo en el ultimo
         if (!inRange) {
             i--;
-            this.currentMap = allTheLevels.levels[i].GetRandomMap();
+            this.currentMap = allTheLevels.levels[i].GetRandomMap(portalType);
+            // estos 2 pueden cambiar solo por el portal que se elije, shots y coins dependen
+            // del stage en el que esta,y si no hay mas stages se mantienen como aca.
+            this.levelLightReward.value = allTheLevels.levels[i].lightReward;
+            this.levelDarkReward.value = allTheLevels.levels[i].darkReward;
         }
 
         this.currentMap = Instantiate(this.currentMap);

@@ -6,9 +6,15 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public FloatValue totalCoins;
     public FloatValue remainingShots;
+    public FloatValue totalLightCoins;
+    public FloatValue totalDarkCoins;
     public FloatValue levelCoinReward;
     public FloatValue levelShotReward;
-    public DisplayFloatValue coinDisplay;
+    public FloatValue levelLightReward;
+    public FloatValue levelDarkReward;
+    public DisplayFloatValue normalCoinDisplay;
+    public DisplayFloatValue lightCoinDisplay;
+    public DisplayFloatValue darkCoinDisplay;
     public DisplayFloatValue shotsDisplay;
     public GameObject gainedShots;
     
@@ -31,14 +37,25 @@ public class Player : MonoBehaviour {
 
     private void LevelFinished() {
         totalCoins.value += levelCoinReward.value;
+        
+        if (levelLightReward.value > 0) {
+            totalLightCoins.value += levelLightReward.value;
+            lightCoinDisplay.Display();
+        }
+        
+        if (levelDarkReward.value > 0) {
+            totalDarkCoins.value += levelDarkReward.value;
+            darkCoinDisplay.Display();
+        }
+
         remainingShots.value += levelShotReward.value;
         gainedShots.SetActive(true);
-        coinDisplay.Display();
+        normalCoinDisplay.Display();
         shotsDisplay.Display();
     }
 
     private void GainCoin() {
         totalCoins.value++;
-        coinDisplay.Display();
+        normalCoinDisplay.Display();
     }
 }

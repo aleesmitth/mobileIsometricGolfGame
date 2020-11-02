@@ -4,8 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
+public enum PortalType {
+    Dark,
+    Light,
+    Normal
+}
 public class FinishLevel : MonoBehaviour {
     public FloatValue finishLevelReward;
+    public PortalType portalType;
     private void OnTriggerEnter(Collider other) {
         if (!other.gameObject.CompareTag("Player")) return;
         
@@ -14,6 +21,6 @@ public class FinishLevel : MonoBehaviour {
         textGameObject.GetComponent<TextMeshProUGUI>().text = "+" + finishLevelReward.value;
         textGameObject.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         
-        EventManager.OnLevelFinished();
+        EventManager.OnLevelFinished(portalType);
     }
 }

@@ -12,6 +12,7 @@ public class CoinTextMovement : MonoBehaviour {
     private float timerBuffer;
 
     private void OnEnable() {
+        transform.localScale = Vector3.one;
         timerBuffer = dissapearTimer.value;
         var colorBuffer = textMesh.color;
         //full alpha (visible)
