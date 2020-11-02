@@ -10,9 +10,9 @@ public class Levels : ScriptableObject {
         public int levelRangeMax;
         public GameObject[] mapsInThisRange;
         private int lastMapBuffer = default(int);
+        public float shotsReward;
 
         public GameObject GetRandomMap() {
-            Debug.Log(lastMapBuffer);
             var nextMap = this.lastMapBuffer;
             while (nextMap == this.lastMapBuffer) {
                 nextMap = Random.Range(0, mapsInThisRange.Length);

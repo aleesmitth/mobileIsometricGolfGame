@@ -60,9 +60,10 @@ public class GameManager : MonoBehaviour {
         if (currentStreak.value > bestStreak.value) {
             bestStreak.value = currentStreak.value;
             bestStreakDisplay.Display();
+            //TODO aca habria q tirar animacion de haber mejorado el best score
         }
         currentStreakDisplay.Display();
-        player.LevelFinished();
+        EventManager.OnPlayerReceiveRewards();
         levelManager.UnloadLevel();
         levelManager.LoadLevel();
     }

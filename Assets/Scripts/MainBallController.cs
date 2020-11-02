@@ -75,6 +75,7 @@ public class MainBallController : MonoBehaviour {
     }
 
     private void Release() {
+        if(shotStrength.value == 0) return;
         _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
         EventManager.OnBallHit();

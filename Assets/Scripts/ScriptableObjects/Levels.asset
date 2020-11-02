@@ -18,8 +18,10 @@ MonoBehaviour:
     - {fileID: 6561555283590892388, guid: c5f1049d828ccdd468ad7696ea9c9ee0, type: 3}
     - {fileID: 6561555283590892388, guid: 6bf8c38ec7a815e4dbb436fcd7da9173, type: 3}
     - {fileID: 6561555283590892388, guid: dd8399b40cf829a4d97198ae48470a51, type: 3}
+    shotsReward: 5
   - levelRangeMax: 4
     mapsInThisRange:
     - {fileID: 6561555283590892388, guid: f8419976047543d42a5cabae89fd2c15, type: 3}
     - {fileID: 6561555283590892388, guid: c81b1251303a02d4aa4b34ca39e4c376, type: 3}
     - {fileID: 6561555283590892388, guid: 2fd989f6a2cbaaf4393178fcc6789e23, type: 3}
+    shotsReward: 10

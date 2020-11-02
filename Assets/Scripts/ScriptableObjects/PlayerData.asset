@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26a4fcb5775048459b0ae7caca331f7, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  totalCoins: {fileID: 11400000, guid: 213e3226dbd4ae84e92d133c0a96a90d, type: 2}
+  totalCoins: {fileID: 11400000, guid: fff29af34b513cf4a976ba617135be9e, type: 2}
   bestStreak: {fileID: 11400000, guid: b3e9ee948805b7e49bbdcc951c8da614, type: 2}
-  coinBuffer: 9
-  bestStreakBuffer: 7
+  coinBuffer: 0
+  bestStreakBuffer: 0

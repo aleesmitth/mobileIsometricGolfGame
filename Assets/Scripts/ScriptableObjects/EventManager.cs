@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "EventManager", menuName = "ScriptableObjects/EventManager")]
-public class EventManager : ScriptableObject {    
-    public static event Action onBallHit;
+public class EventManager : ScriptableObject {
+	public static event Action onBallHit;
     public static event Action onBallDragged;
     public static event Action onCoinGrabbed;
     public static event Action onLevelFinished;
+    public static event Action onPlayerReceiveRewards;
     public static void OnBallHit() {
 		onBallHit?.Invoke();
 	}
@@ -22,5 +23,9 @@ public class EventManager : ScriptableObject {
 
 	public static void OnLevelFinished() {
 		onLevelFinished?.Invoke();
+	}
+	
+	public static void OnPlayerReceiveRewards() {
+		onPlayerReceiveRewards?.Invoke();
 	}
 }

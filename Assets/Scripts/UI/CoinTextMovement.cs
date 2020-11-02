@@ -20,13 +20,13 @@ public class CoinTextMovement : MonoBehaviour {
     }
 
     private void Update() {
-        transform.position += Vector3.down * textSpeed.value * Time.deltaTime;
+        transform.position += Vector3.up * textSpeed.value * Time.deltaTime;
         timerBuffer -= Time.deltaTime;
         if (timerBuffer > dissapearTimer.value * .7) {
-            transform.localScale += Vector3.one * Time.deltaTime;
+            transform.localScale -= Vector3.one * Time.deltaTime;
         }
         else if (timerBuffer < dissapearTimer.value * .7 && timerBuffer > dissapearTimer.value * .2) {
-            transform.localScale -= Vector3.one * Time.deltaTime;
+            transform.localScale += Vector3.one * Time.deltaTime;
         }
         if (!(timerBuffer < 0)) return;
         var colorBuffer = textMesh.color;

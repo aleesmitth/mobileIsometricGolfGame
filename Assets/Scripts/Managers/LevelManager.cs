@@ -10,7 +10,8 @@ public class LevelManager : MonoBehaviour {
     public Levels allTheLevels;
     public Transform startingPosition;
     public GameObject currentMap;
-    public FloatValue finishLevelReward;
+    public FloatValue levelCoinReward;
+    public FloatValue levelShotReward;
 
     public void LoadLevel() {
         bool inRange = false;
@@ -21,7 +22,8 @@ public class LevelManager : MonoBehaviour {
                 //lo hice al azar esto, pero cada vez q cambia de stage, cambian las rewards por terminar el mapa
                 //el player va a recibir las rewards 1 mapa atrasado digamos, porq las recibe antes
                 //de cargar el mapa, esto seria como setearlas para el proximo
-                this.finishLevelReward.value = (currentStreak.value + 1) * allTheLevels.levels[i].levelRangeMax;
+                this.levelCoinReward.value = (currentStreak.value + 1) * allTheLevels.levels[i].levelRangeMax;
+                this.levelShotReward.value = allTheLevels.levels[i].shotsReward;
                 this.currentMap = allTheLevels.levels[i].GetRandomMap();
             }
 
