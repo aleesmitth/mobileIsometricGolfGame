@@ -21,16 +21,16 @@ public class Player : MonoBehaviour {
     private void OnEnable() {
         EventManager.onCoinGrabbed += GainCoin;
         EventManager.onPlayerReceiveRewards += LevelFinished;
-        EventManager.onBallHit += MinusRemainingShot;
+        EventManager.onBallHit += OneLessRemainingShot;
     }
 
     private void OnDisable() {
         EventManager.onCoinGrabbed -= GainCoin;
         EventManager.onPlayerReceiveRewards -= LevelFinished;
-        EventManager.onBallHit -= MinusRemainingShot;
+        EventManager.onBallHit -= OneLessRemainingShot;
     }
 
-    private void MinusRemainingShot() {
+    private void OneLessRemainingShot() {
         remainingShots.value--;
         shotsDisplay.Display();
     }

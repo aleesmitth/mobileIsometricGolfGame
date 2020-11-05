@@ -10,7 +10,7 @@ public class MainBallController : MonoBehaviour {
     public FloatValue touchDeadzone;
     public FloatValue rotationSpeed;
     public FloatValue maxStrength;
-    public Transform ballDirection;
+    public Transform ballTracker;
     private Vector3 initialTouchPosition;
     private bool initialTouch = default(bool);
     private Touch touch;
@@ -21,6 +21,15 @@ public class MainBallController : MonoBehaviour {
     private void Start() {
         this._camera = Camera.main;
         this._rigidbody = transform.GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable() {
+        ballTracker.gameObject.SetActive(true);
+    }
+    
+    private void OnDisable() {
+        if (ballTracker == null) return;
+        ballTracker.gameObject.SetActive(false);
     }
 
     private void Update() {
@@ -66,7 +75,7 @@ public class MainBallController : MonoBehaviour {
         //Debug.DrawRay(mainBall.position, direction, Color.cyan, 2f);
         //Debug.DrawRay(mainBall.position, direction, Color.cyan, 2f);
         var lookRotation = Quaternion.LookRotation(direction,Vector3.up);
-        ballDirection.rotation = Quaternion.Lerp(ballDirection.rotation, lookRotation, Time.deltaTime * rotationSpeed.value);
+        ballTracker.rotation = Quaternion.Lerp(ballTracker.rotation, lookRotation, Time.deltaTime * rotationSpeed.value);
         UpdateShotStrength(position);
         //mainBall.transform.forward = direction;
         //mainBall.ro
@@ -76,7 +85,7 @@ public class MainBallController : MonoBehaviour {
 
     private void Release() {
         if(shotStrength.value == 0) return;
-        _rigidbody.AddForce(ballDirection.forward * shotStrength.value, ForceMode.Impulse);
+        _rigidbody.AddForce(ballTracker.forward * shotStrength.value, ForceMode.Impulse);
         shotStrength.value = 0;
         EventManager.OnBallHit();
         initialTouch = false;
@@ -91,7 +100,7 @@ public class MainBallController : MonoBehaviour {
         Ray ray = _camera.ScreenPointToRay(Input.GetTouch(0).position);
         // create a logical plane at this object's position (my main ball in this case)
         // and perpendicular to world Y:
-        Plane plane = new Plane(Vector3.up, ballDirection.position);
+        Plane plane = new Plane(Vector3.up, ballTracker.position);
         if (plane.Raycast(ray, out var distance)){ // if plane hit...
             position = ray.GetPoint(distance); // get the point
             // pos has the position in the plane you've touched
