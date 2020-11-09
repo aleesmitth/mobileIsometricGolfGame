@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public Player player;
     public FloatValue fps;
     public TextMeshProUGUI fpsText;
+    public FloatValue quality;
     public FloatValue currentStreak;
     public FloatValue bestStreak;
     public DisplayFloatValue currentStreakDisplay;
@@ -36,15 +37,15 @@ public class GameManager : MonoBehaviour {
         EventManager.onLevelFinished -= LevelFinished;
     }
 
-    public void ChangeGameQuality(bool higherQuality) {
-        if (higherQuality) {
-            QualitySettings.IncreaseLevel();
-        }
-        else {
-            QualitySettings.DecreaseLevel();
-        }
+    public void UpdateConfig() {
+        UpdateQuality();
+        //reload scene
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    private void UpdateQuality() {
+        QualitySettings.SetQualityLevel((int)quality.value);
     }
 
     private void MakeSingleton() {
