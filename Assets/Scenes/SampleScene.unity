@@ -1599,6 +1599,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6afc184c9dd5f4e8d93d39eda34f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1624854855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1404630887, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+  m_PrefabInstance: {fileID: 3911664101355640942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1720264144 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1720264144, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
@@ -2018,6 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDataBuffer: {fileID: 11400000, guid: a8def3fd94733404da4261367252fbce, type: 2}
+  playerData: {fileID: 11400000, guid: 02e0b34b01db11d4db28bec578c8398a, type: 2}
   autoSaveInSeconds: {fileID: 11400000, guid: 3e4cb0e1b9e06994da0566a27073da0b, type: 2}
 --- !u!4 &2109419664
 Transform:
@@ -2045,6 +2051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1686411f92cc80747a675fb43118f6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileManager: {fileID: 2109419663}
   player: {fileID: 996565568}
   fps: {fileID: 11400000, guid: f92903b938ad45c4ea342b3624870e7a, type: 2}
   fpsText: {fileID: 1317057656}
@@ -2084,13 +2091,53 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2109419665}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1624854855}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 716972119, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404630887, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1404630889, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 87624a30c8874bd46a8c34ba738a3a32, type: 2}
+    - target: {fileID: 1459967640, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940078923, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3911664099840106280, guid: 704dd482fcc161b4399ff38ed3bf5c54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

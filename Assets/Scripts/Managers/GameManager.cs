@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private float deltaTime = 0.0f;
+    public FileManager fileManager;
     public Player player;
     public FloatValue fps;
     public TextMeshProUGUI fpsText;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
     public void UpdateConfig() {
         UpdateQuality();
         //reload scene
+        fileManager.Save();
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

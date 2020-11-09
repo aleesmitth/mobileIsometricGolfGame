@@ -16,3 +16,4 @@ MonoBehaviour:
   totalLightCoins: {fileID: 11400000, guid: 44f10d1272067e34598faf9b5cf96d8f, type: 2}
   totalDarkCoins: {fileID: 11400000, guid: 4cef7cc1ba252544c9f48aa233e0cf90, type: 2}
   bestStreak: {fileID: 11400000, guid: b3e9ee948805b7e49bbdcc951c8da614, type: 2}
+  quality: {fileID: 11400000, guid: 212b9e7b5dd0a0644936033c583a0ac7, type: 2}

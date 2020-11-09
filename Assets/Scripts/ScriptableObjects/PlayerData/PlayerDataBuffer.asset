@@ -17,3 +17,4 @@ MonoBehaviour:
   lightCoinBuffer: 0
   darkCoinBuffer: 0
   bestStreakBuffer: 0
+  qualityBuffer: 0

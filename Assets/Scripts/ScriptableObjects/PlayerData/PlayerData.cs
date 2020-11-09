@@ -9,4 +9,5 @@ public class PlayerData : ScriptableObject {
     public FloatValue totalLightCoins;
     public FloatValue totalDarkCoins;
     public FloatValue bestStreak;
+    public FloatValue quality;
 }
