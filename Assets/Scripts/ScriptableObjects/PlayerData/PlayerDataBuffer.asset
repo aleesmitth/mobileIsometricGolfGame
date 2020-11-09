@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26a4fcb5775048459b0ae7caca331f7, type: 3}
   m_Name: PlayerDataBuffer
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 02e0b34b01db11d4db28bec578c8398a, type: 2}
   coinBuffer: 0
   lightCoinBuffer: 0
   darkCoinBuffer: 0
