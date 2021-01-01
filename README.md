@@ -1,16 +1,10 @@
 # IsometricGolfMobileGame
 simple golf game with isometric camera angle made in unity
 ## Demo
-### start menu
-<p align="center">
-  <img src="demoFootage/firstDemo/images/start.png" span title="start menu" width="360" height="600"/>
-</p>
-
----
-
 ### shooting
 <p align="center">
-  <img src="demoFootage/firstDemo/gifs/shooting.gif" span title="shooting" width="360" height="600"/>
+  <img src="demoFootage/firstDemo/gifs/shot.gif" span title="shooting" width="360" height="600"/>
+  <img src="demoFootage/firstDemo/gifs/shot2.gif" span title="shooting" width="360" height="600"/>
 </p>
 
  `dragging the screen gives the ball direction and speed.`
