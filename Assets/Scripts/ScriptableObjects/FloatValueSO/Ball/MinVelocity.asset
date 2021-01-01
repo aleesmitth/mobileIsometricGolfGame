@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39489044c0a549a4e9e699b64516eb2e, type: 3}
   m_Name: MinVelocity
   m_EditorClassIdentifier: 
-  value: 1000
+  value: 10

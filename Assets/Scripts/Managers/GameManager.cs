@@ -16,9 +16,13 @@ public class GameManager : MonoBehaviour {
     public FloatValue quality;
     public FloatValue currentStreak;
     public FloatValue bestStreak;
+    public DisplayFloatValue[] startGameUIDisplays;
     public DisplayFloatValue currentStreakDisplay;
     public DisplayFloatValue bestStreakDisplay;
     public LevelManager levelManager;
+    public GameObject gameUI;
+    public GameObject endScreenUI;
+    public EndOfGameResetter endOfGameResetter;
 
     public static GameManager instance;
 
@@ -32,10 +36,12 @@ public class GameManager : MonoBehaviour {
 
     private void OnEnable() {
         EventManager.onLevelFinished += LevelFinished;
+        EventManager.onPlayerDied += ShowEndScreen;
     }
 
     private void OnDisable() {
         EventManager.onLevelFinished -= LevelFinished;
+        EventManager.onPlayerDied -= ShowEndScreen;
     }
 
     public void UpdateConfig() {
@@ -70,9 +76,31 @@ public class GameManager : MonoBehaviour {
         levelManager.UnloadLevel();
         levelManager.LoadLevel(portalType);
     }
-
+    
     public void StartGame() {
+        RefreshGameBuffers();
         levelManager.StartGame();
+    }
+    
+    public void PlayAgain(bool playAgain) {
+        RefreshGameBuffers();
+        //cargo mapa nuevo.
+        levelManager.LoadStartingLevel();
+        if(playAgain == true)
+            //empiezo el juego posicionando la bola del jugador.
+            StartGame();
+    }
+
+    private void RefreshGameBuffers() {
+        endOfGameResetter.ResetBuffers();
+        foreach (var display in startGameUIDisplays) {
+            display.Display();
+        }
+    }
+
+    private void ShowEndScreen() {
+        gameUI.gameObject.SetActive(false);
+        endScreenUI.gameObject.SetActive(true);
     }
     
     private void Update() {

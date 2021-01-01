@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
+    //el level manager se encarga de sacar el mapa de la pool adecuada dependiendo mi current streak
+    
     public Transform playerBall;
     public Transform golfClub;
     public FloatValue currentStreak;
@@ -46,8 +48,15 @@ public class LevelManager : MonoBehaviour {
 
         this.currentMap = Instantiate(this.currentMap);
         this.startingPosition = this.currentMap.transform.Find("StartingPosition");
-        playerBall.transform.position = startingPosition.position;
-        playerBall.gameObject.SetActive(true);
+        StartGame();
+    }
+
+    public void LoadStartingLevel() {
+        if(currentMap != null)
+            Destroy(currentMap);
+        this.currentMap = allTheLevels.levels[0].GetRandomMap(PortalType.Normal);
+        this.currentMap = Instantiate(this.currentMap);
+        this.startingPosition = this.currentMap.transform.Find("StartingPosition");
     }
 
     public void UnloadLevel() {

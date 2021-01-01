@@ -9,7 +9,7 @@ public class EventManager : ScriptableObject {
     public static event Action onCoinGrabbed;
     public static event Action<PortalType> onLevelFinished;
     public static event Action onPlayerReceiveRewards;
-    public static event Action onFileLoaded;
+    public static event Action onPlayerDied;
     public static void OnBallHit() {
 		onBallHit?.Invoke();
 	}
@@ -29,8 +29,8 @@ public class EventManager : ScriptableObject {
 	public static void OnPlayerReceiveRewards() {
 		onPlayerReceiveRewards?.Invoke();
 	}
-
-	public static void OnFileLoaded() {
-		onFileLoaded?.Invoke();
+	
+	public static void OnPlayerDied() {
+		onPlayerDied?.Invoke();
 	}
 }

@@ -10,6 +10,7 @@ public class MainBallController : MonoBehaviour {
     public FloatValue touchDeadzone;
     public FloatValue rotationSpeed;
     public FloatValue maxStrength;
+    public FloatValue remainingShots;
     public Transform ballTracker;
     private Vector3 initialTouchPosition;
     private bool initialTouch = default(bool);
@@ -34,6 +35,11 @@ public class MainBallController : MonoBehaviour {
 
     private void Update() {
         if (!ImStill()) return;
+
+        if (remainingShots.value <= 0) {
+            EventManager.OnPlayerDied();
+            return;
+        }
         
         if (Input.touchCount != 1 || !CanShootBall) return;
         this.touch = Input.GetTouch(0);
@@ -41,7 +47,7 @@ public class MainBallController : MonoBehaviour {
             case TouchPhase.Began: StartDrag();
                 break;
             //case TouchPhase.Stationary:
-            case TouchPhase.Moved: Dragging(); 
+            case TouchPhase.Moved: Dragging();
                 break;
             case TouchPhase.Canceled:
             case TouchPhase.Ended: Release(); 

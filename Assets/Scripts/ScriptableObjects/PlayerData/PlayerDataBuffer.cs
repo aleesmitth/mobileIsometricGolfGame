@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDataBuffer", menuName = "ScriptableObjects/PlayerDataBuffer")]
 public class PlayerDataBuffer : ScriptableObject {
     [Header("Buffers to serialize")]
+    public float cameraSpeedBuffer = default(float);
     public float coinBuffer = default(float);
     public float lightCoinBuffer = default(float);
     public float darkCoinBuffer = default(float);
@@ -13,6 +14,7 @@ public class PlayerDataBuffer : ScriptableObject {
     public float qualityBuffer = default(float);
 
     public void OnBeforeSerialize(PlayerData playerData) {
+        cameraSpeedBuffer = playerData.cameraSpeed.value;
         coinBuffer = playerData.totalCoins.value;
         lightCoinBuffer = playerData.totalLightCoins.value;
         darkCoinBuffer = playerData.totalDarkCoins.value;
@@ -21,6 +23,7 @@ public class PlayerDataBuffer : ScriptableObject {
     }
     
     public void OnAfterDeserialize(PlayerData playerData) {
+        playerData.cameraSpeed.value = cameraSpeedBuffer;
         playerData.totalCoins.value = coinBuffer;
         playerData.totalLightCoins.value = lightCoinBuffer;
         playerData.totalDarkCoins.value = darkCoinBuffer;

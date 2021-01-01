@@ -5,6 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData")]
 public class PlayerData : ScriptableObject {
+    public FloatValue cameraSpeed;
     public FloatValue totalCoins;
     public FloatValue totalLightCoins;
     public FloatValue totalDarkCoins;

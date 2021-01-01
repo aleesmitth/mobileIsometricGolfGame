@@ -26,7 +26,7 @@ public class DisplayFloatValue : MonoBehaviour {
         if (inTheSameLine)
             text.text = originalText + floatValue.value;
         else {
-            text.text = floatValue.value + "\n" + originalText;
+            text.text = originalText + "\n" +  floatValue.value;
         }
     }
 }

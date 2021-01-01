@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e93790774f17e14bb0acf412570121c, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  cameraSpeed: {fileID: 11400000, guid: 3f32748d23336cb46903421e9422414b, type: 2}
   totalCoins: {fileID: 11400000, guid: 213e3226dbd4ae84e92d133c0a96a90d, type: 2}
   totalLightCoins: {fileID: 11400000, guid: 44f10d1272067e34598faf9b5cf96d8f, type: 2}
   totalDarkCoins: {fileID: 11400000, guid: 4cef7cc1ba252544c9f48aa233e0cf90, type: 2}
