@@ -1,5 +1,18 @@
 # IsometricGolfMobileGame
 simple golf game with isometric camera angle made in unity
+
+---
+```
+stuff to do:
+
+❌basic animations
+❌no music
+❌only using unity assets
+❌shop not finished
+❌no post processing
+❌game only has demo maps
+```
+
 ## Demo
 ### shooting
 <p align="center">
