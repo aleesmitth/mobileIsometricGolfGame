@@ -70,9 +70,14 @@ public class MainBallController : MonoBehaviour {
         EventManager.OnBallDragged();
         var position = CastRayFromScreenToWorld();
         //direction from where i am touching now to initial touch
-        var direction = initialTouchPosition - position;
+        var direction = position - initialTouchPosition;
         //if it was a tap on the screen return
-        if (direction.magnitude < touchDeadzone.value) return;
+        if (direction.magnitude < touchDeadzone.value) {
+            ballTracker.rotation = Quaternion.Lerp(ballTracker.rotation, Quaternion.identity, Time.deltaTime * rotationSpeed.value);
+            //set shot strength to 0
+            UpdateShotStrength(initialTouchPosition);
+            return;
+        }
         //direction relative to my ball
         //direction = mainBall.position - direction;
         //disable rotation in y axis
